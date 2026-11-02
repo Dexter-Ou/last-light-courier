@@ -3,7 +3,11 @@
 A tiny offline route puzzle. Collect every parcel, use a single-use charger wisely,
 and reach the exit before the battery runs out. Three original routes; no timer.
 
-Extract the entire ZIP, then open `index.html` in a modern browser. Keep `game.js`
+For download instructions and optional feedback, see [Try a delivery](PLAYTEST.md).
+To generate a single-file copy locally, run `python3 build-single.py`, then open
+`last-light-courier.html`; no sibling files are needed for the generated copy.
+
+Alternatively, extract the entire source ZIP, then open `index.html` in a modern browser. Keep `game.js`
 and `ui.js` beside it. No install, server, build step or network connection needed.
 Use on-screen direction buttons or arrow keys/WASD. U undoes; R restarts.
 Select any route at any time. While the route selector has focus, arrow keys change
@@ -22,3 +26,5 @@ Other browsers and touch hardware have not been tested.
 To run developer checks, use `node test.js` from this folder.
 If reporting a bug, include route name, moves and expected result; avoid personal data.
 Source and original CSS/text assets are MIT licensed. No third-party libraries.
+
+To rebuild the portable file from source, run `python3 build-single.py`.
