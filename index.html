@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Last Light Courier</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#101624;color:#eef3ff}body{max-width:720px;margin:0 auto;padding:24px}h1{margin-bottom:8px;font-size:clamp(1.8rem,7vw,2.8rem)}p{line-height:1.5;color:#c6d0e3}button,select{font:inherit;background:#27354e;color:#fff;border:1px solid #8293b0;border-radius:8px;padding:10px;margin:4px;cursor:pointer}button:focus-visible,select:focus-visible{outline:3px solid #ffdf70}#board{display:grid;gap:4px;max-width:490px;margin:20px auto}.cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#243149;border-radius:5px;font-size:clamp(.8rem,4vw,1.5rem)}.wall{background:#151e30}.player{background:#ffdf70;color:#101624;font-weight:bold}.charger{color:#7af0ca}.parcel{color:#ffb9cf}#status{min-height:3em;color:#ffdf70;font-weight:600}.controls{text-align:center}small{color:#b8c5db}label{display:inline-block}
+</style>
+<h1>Last Light Courier</h1><p>Pick up every parcel <b>◆</b>, then reach the exit <b>E</b>. Each step costs one battery. A charger <b>+</b> fills it once. Plan before you move.</p>
+<label>Route <select id="level"></select></label><button id="reset">Restart</button><button id="undo">Undo</button>
+<div id="stats"></div><div id="board" role="img" aria-label="Route map"></div><div id="status" role="status" aria-live="polite"></div>
+<div class="controls"><button data-dir="up" aria-label="Move up">↑</button><br><button data-dir="left" aria-label="Move left">←</button><button data-dir="down" aria-label="Move down">↓</button><button data-dir="right" aria-label="Move right">→</button></div>
+<p><small>Arrow keys or WASD move · U undoes · R restarts. You can cross the exit before collecting everything. Arrive with your last battery to win. No timer, uploads, accounts or saved progress. Prototype: three routes.</small></p>
+<script src="game.js"></script><script src="ui.js"></script></html>
