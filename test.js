@@ -37,6 +37,22 @@ const ids=Object.fromEntries(['board','level','reset','undo','stats','status'].m
 const buttons=Object.keys(dirs).map(d=>{let e=new Element();e.dataset.dir=d;return e;});
 const doc={getElementById:id=>ids[id],createElement:()=>new Element(),querySelectorAll:()=>buttons,listeners:{},addEventListener(k,v){this.listeners[k]=v;}};
 const ctx={document:doc,Courier:require('./game.js')};vm.createContext(ctx);vm.runInContext(fs.readFileSync('ui.js','utf8'),ctx);
+// Every cell, including walls and empty floor, must be represented spatially.
+for(let i=0;i<levels.length;i++){
+ ids.level.value=String(i);ids.level.listeners.change();
+ const label=ids.board['aria-label'],l=levels[i];
+ assert.match(label,new RegExp(`^${l.map[0].length} columns, ${l.map.length} rows\\.`));
+ l.map.forEach((row,y)=>[...row].forEach((tile,x)=>{
+  const type=tile==='#'?'wall':tile==='S'?'courier':tile==='E'?'exit':tile==='C'?'charger':tile==='*'?'parcel':'floor';
+  assert(label.includes(`column ${x+1}, row ${y+1}: ${type}`),`missing ${i}:${x},${y}:${type}`);
+ }));
+}
+ids.level.value='0';ids.level.listeners.change();
+const initialLabel=ids.board['aria-label'];
+buttons.find(b=>b.dataset.dir==='right').onclick();
+assert.match(ids.board['aria-label'],/column 3, row 2: courier/);
+assert.match(ids.board['aria-label'],/column 2, row 2: floor/);
+ids.undo.onclick();assert.equal(ids.board['aria-label'],initialLabel);
 const initial=ids.stats.textContent;buttons.find(b=>b.dataset.dir==='right').onclick();assert.notEqual(ids.stats.textContent,initial);
 ids.undo.onclick();assert.equal(ids.stats.textContent,initial);
 buttons[0].onclick();ids.reset.onclick();assert.equal(ids.stats.textContent,initial);
