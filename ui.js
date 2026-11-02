@@ -13,9 +13,9 @@ function render(){
  if(state.parcels.includes(p)){text='◆';type='parcel';}
  if(x===state.x&&y===state.y){text='●';type='player';}
  cell.className='cell '+type;cell.textContent=text;board.append(cell);
- if(type!=='wall'&&(text||t==='S'))descriptions.push(`column ${x+1}, row ${y+1}: ${type==='player'?'courier':text==='E'?'exit':type}`);
+ descriptions.push(`column ${x+1}, row ${y+1}: ${type==='player'?'courier':text==='E'?'exit':type}`);
  }));
- board.setAttribute('aria-label',descriptions.join('; '));
+ board.setAttribute('aria-label',`${l.map[0].length} columns, ${l.map.length} rows. `+descriptions.join('; '));
  document.getElementById('stats').textContent=`Battery ${state.energy}/${l.battery} · Parcels left ${state.parcels.length} · Steps ${state.moves}`;
  document.getElementById('status').textContent=state.status==='won'?'Delivered! Choose another route, or try fewer steps.':state.status==='empty'?'Battery empty. Undo a step or restart to plan another route.':'Collect the parcels and reach E. The charger works once.';
  document.getElementById('undo').disabled=!history.length;
