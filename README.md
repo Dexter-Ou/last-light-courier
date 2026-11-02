@@ -12,6 +12,8 @@ and `ui.js` beside it. No install, server, build step or network connection need
 Use on-screen direction buttons or arrow keys/WASD. U undoes; R restarts.
 Select any route at any time. While the route selector has focus, arrow keys change
 the selection; click the board or a direction button to resume keyboard movement.
+The board has a coordinate-based text description of every cell, including walls
+and empty floor. Assistive technology and screen-reader use have not been tested.
 Restart clears the route; reloading clears all progress. There is no saved progress.
 
 Battery falls by one for every valid step; walls cost nothing. A charger refills
