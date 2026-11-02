@@ -1,6 +1,6 @@
 # Try a delivery
 
-Download the [source ZIP](https://codeload.github.com/Dexter-Ou/last-light-courier/zip/45b913b0635636e627dd085966d21c610b127388),
+Download the [source ZIP](https://codeload.github.com/Dexter-Ou/last-light-courier/zip/8ef30a7fd89b1c8b3054d7eb7bda6815b7a49c6d),
 extract the entire folder, then open `index.html`. Keep `game.js` and `ui.js` beside it.
 GitHub's file view displays source rather than playing the game. You can disconnect
 after downloading: the game has no external resources or telemetry.
